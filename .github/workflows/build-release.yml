@@ -1,0 +1,71 @@
+name: Build and Release (Ubuntu)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libglu1-mesa-dev \
+            libgl1-mesa-dev \
+            libxext-dev \
+            libsdl1.2-dev \
+            libsdl-mixer1.2-dev \
+            libasound2-dev
+
+      - name: Build ImageLib
+        run: make -C ImageLib/src
+
+      - name: Build BlockOut (release)
+        run: make -C BlockOut _linux64=1 _release=1
+
+      - name: Package release tarball
+        run: |
+          RELEASE_DATE=$(date -u +%Y%m%d)
+          BRANCH="${GITHUB_REF_NAME}"
+          PKG_NAME="blockout-${BRANCH}-${RELEASE_DATE}"
+          mkdir -p "dist/${PKG_NAME}"
+          cp BlockOut/blockout "dist/${PKG_NAME}/"
+          cp -r BlockOut/images "dist/${PKG_NAME}/"
+          cp -r BlockOut/sounds "dist/${PKG_NAME}/"
+          cp README.txt "dist/${PKG_NAME}/"
+          cp BlockOut/README.txt "dist/${PKG_NAME}/README.BlockOut.txt"
+          tar -czf "dist/${PKG_NAME}.tar.gz" -C dist "${PKG_NAME}"
+          echo "PKG_NAME=${PKG_NAME}" >> "$GITHUB_ENV"
+          echo "PKG_PATH=dist/${PKG_NAME}.tar.gz" >> "$GITHUB_ENV"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG_NAME }}
+          path: ${{ env.PKG_PATH }}
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.PKG_NAME }}
+          release_name: BlockOut II ${{ github.ref_name }} ${{ env.PKG_NAME }}
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ env.PKG_PATH }}
+          asset_name: ${{ env.PKG_NAME }}.tar.gz
+          asset_content_type: application/gzip
