@@ -1,0 +1,20 @@
+# Compiled binaries and objects
+BlockOut/blockout
+BlockOut/*.o
+BlockOut/GLApp/*.o
+ImageLib/src/libimagelib.a
+ImageLib/src/*.o
+ImageLib/src/gif/*.o
+ImageLib/src/jpg/*.o
+ImageLib/src/png/*.o
+ImageLib/src/png/png/*.o
+ImageLib/src/png/zlib/*.o
+
+# Local data/cache directories
+.bl2
+
+# Editor/system miscellany
+*~
+*.swp
+*.swo
+.DS_Store
