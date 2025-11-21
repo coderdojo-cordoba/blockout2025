@@ -26,12 +26,18 @@ jobs:
       - name: Install deps (Homebrew)
         run: |
           brew update
-          brew install sdl sdl2_mixer pkg-config
+          brew install sdl sdl_mixer pkg-config
+
+      - name: Set build env
+        id: brew-env
+        run: |
+          PREFIX=$(brew --prefix)
+          echo "HOMEBREW_PREFIX=$PREFIX" >> $GITHUB_ENV
+          echo "CXXFLAGS=-I${PREFIX}/include" >> $GITHUB_ENV
+          echo "LDFLAGS=-L${PREFIX}/lib" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig" >> $GITHUB_ENV
 
       - name: Build ImageLib and BlockOut (release)
-        env:
-          CXXFLAGS: "-I/usr/local/include"
-          LDFLAGS: "-L/usr/local/lib"
         run: |
           make -C ImageLib/src
           make -C BlockOut _release=1 _linux64=1
