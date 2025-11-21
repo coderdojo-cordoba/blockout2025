@@ -40,7 +40,8 @@ jobs:
         run: |
           VERSION_BASE="2.5"
           RELEASE_DATE=$(date -u +%Y%m%d)
-          PKG_VERSION="${VERSION_BASE}+${GITHUB_REF_NAME}-${RELEASE_DATE}-${GITHUB_RUN_NUMBER}"
+          PKG_VERSION="${VERSION_BASE}_${GITHUB_REF_NAME}-${RELEASE_DATE}-${GITHUB_RUN_NUMBER}"
+          PKG_VERSION=${PKG_VERSION//[^A-Za-z0-9._]/_}
           WORK=/home/builder/pkg
           mkdir -p "${WORK}"
           PKGBUILD_PATH="${WORK}/PKGBUILD"
