@@ -135,8 +135,9 @@ char *FormatDate(uint32 time) {
     time_t innerTm = (time_t)time;
     struct tm *ts = localtime((time_t *)&innerTm);
 #endif
-    sprintf(ret,"%02d-%02d-%04d %02d:%02d:%02d",ts->tm_mday,ts->tm_mon+1,ts->tm_year+1900,
-                                                ts->tm_hour,ts->tm_min,ts->tm_sec);
+    snprintf(ret,sizeof(ret),"%02d-%02d-%04d %02d:%02d:%02d",
+             ts->tm_mday,ts->tm_mon+1,ts->tm_year+1900,
+             ts->tm_hour,ts->tm_min,ts->tm_sec);
   } else {
     strcpy(ret,"");
   }
@@ -159,7 +160,7 @@ char *FormatDateShort(uint32 time) {
     time_t innerTm = (time_t)time;
     struct tm *ts = localtime((time_t *)&innerTm);
 #endif
-    sprintf(ret,"%02d-%02d-%04d",ts->tm_mday,ts->tm_mon+1,ts->tm_year+1900);
+    snprintf(ret,sizeof(ret),"%02d-%02d-%04d",ts->tm_mday,ts->tm_mon+1,ts->tm_year+1900);
   } else {
     strcpy(ret,"..........");
   }
@@ -239,7 +240,7 @@ BOOL CheckEnv() {
   strcpy( bl2Home , blockoutHome );
     
   char bl2Dir[512];
-  sprintf(bl2Dir,"%s/.bl2",homePath);
+  snprintf(bl2Dir,sizeof(bl2Dir),"%s/.bl2",homePath);
   if( !DirExists(bl2Dir) ) {
     // Create it
     if( mkdir(bl2Dir,S_IRWXU) < 0 ) {
@@ -268,7 +269,7 @@ char *LID(char *fileName) {
 #endif
 
   static char ret[512];
-  sprintf(ret,"%s/%s",bl2Home,fileName);
+  snprintf(ret,sizeof(ret),"%s/%s",bl2Home,fileName);
   return ret;
 
 }
@@ -283,13 +284,13 @@ char *LHD(char *fileName) {
 
 #ifdef WINDOWS
   if( strlen(usrHome)>0 ) {
-    sprintf(ret,"%s\\%s",usrHome,fileName);
+    snprintf(ret,sizeof(ret),"%s\\%s",usrHome,fileName);
     return ret;
   } else {
     return fileName;
   }
 #else
-  sprintf(ret,"%s/%s",usrHome,fileName);
+  snprintf(ret,sizeof(ret),"%s/%s",usrHome,fileName);
   return ret;
 #endif
 
