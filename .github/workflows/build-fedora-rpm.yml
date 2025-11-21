@@ -38,7 +38,9 @@ jobs:
           set -e
           VERSION_BASE="2.5"
           RELEASE_DATE=$(date -u +%Y%m%d)
-          VERSION="${VERSION_BASE}-${GITHUB_REF_NAME}-${RELEASE_DATE}-${GITHUB_RUN_NUMBER}"
+          RPM_RELEASE="${GITHUB_REF_NAME}-${RELEASE_DATE}-${GITHUB_RUN_NUMBER}"
+          RPM_RELEASE=${RPM_RELEASE//[^A-Za-z0-9._]/_}
+          VERSION="${VERSION_BASE}"
           PKGROOT=/tmp/pkgroot
           mkdir -p ${PKGROOT}/usr/local/games/blockout
           mkdir -p ${PKGROOT}/usr/share/applications
@@ -67,7 +69,7 @@ jobs:
           {
             echo "Name:           blockout"
             echo "Version:        ${VERSION}"
-            echo "Release:        1%{?dist}"
+            echo "Release:        ${RPM_RELEASE}%{?dist}"
             echo "Summary:        BlockOut II packaged for Fedora"
             echo "License:        GPLv2+"
             echo "URL:            https://github.com/${GITHUB_REPOSITORY}"
