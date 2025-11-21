@@ -30,6 +30,8 @@ jobs:
           echo "builder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/builder
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Prepare workspace ownership
+        run: chown -R builder:builder "$PWD"
       - name: Build (release)
         run: |
           sudo -u builder bash -lc "cd $PWD && make -C ImageLib/src"
