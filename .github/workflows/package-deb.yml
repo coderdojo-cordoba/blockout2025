@@ -1,0 +1,115 @@
+name: Build Debian Packages (Ubuntu releases)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - development
+    paths:
+      - ".github/workflows/package-deb.yml"
+      - "BlockOut/**"
+      - "ImageLib/**"
+      - "build-and-run.sh"
+      - "install-ubuntu-deps.sh"
+
+permissions:
+  contents: write
+
+jobs:
+  deb:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            distro: ubuntu24.04
+          - runner: ubuntu-24.04
+            distro: ubuntu25.04
+          - runner: ubuntu-24.04
+            distro: ubuntu25.10
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libglu1-mesa-dev \
+            libgl1-mesa-dev \
+            libxext-dev \
+            libsdl1.2-dev \
+            libsdl-mixer1.2-dev \
+            libasound2-dev \
+            fakeroot \
+            dpkg-dev
+
+      - name: Build ImageLib
+        run: make -C ImageLib/src
+
+      - name: Build BlockOut (release)
+        run: make -C BlockOut _linux64=1 _release=1
+
+      - name: Create .deb structure
+        run: |
+          RELEASE_DATE=$(date -u +%Y%m%d)
+          VERSION="${GITHUB_REF_NAME}-${RELEASE_DATE}-${GITHUB_RUN_NUMBER}"
+          PKG_NAME="blockout-${VERSION}"
+          DEBROOT="dist/${PKG_NAME}"
+          mkdir -p "${DEBROOT}/DEBIAN"
+          mkdir -p "${DEBROOT}/usr/local/games/blockout"
+          mkdir -p "${DEBROOT}/usr/share/applications"
+          mkdir -p "${DEBROOT}/usr/share/pixmaps"
+
+          # Control file
+          cat > "${DEBROOT}/DEBIAN/control" <<EOF
+Package: blockout
+Version: ${VERSION}
+Section: games
+Priority: optional
+Architecture: amd64
+Depends: libc6, libglu1-mesa, libgl1, libxext6, libsdl1.2debian, libsdl-mixer1.2
+Maintainer: ${GITHUB_ACTOR}@users.noreply.github.com
+Description: BlockOut II for Linux (packaged)
+ BlockOut II packaged for Ubuntu. Includes binary and assets.
+EOF
+
+          install -m 755 BlockOut/blockout "${DEBROOT}/usr/local/games/blockout/"
+          cp -r BlockOut/images "${DEBROOT}/usr/local/games/blockout/"
+          cp -r BlockOut/sounds "${DEBROOT}/usr/local/games/blockout/"
+          cp README.txt "${DEBROOT}/usr/local/games/blockout/"
+          cp BlockOut/README.txt "${DEBROOT}/usr/local/games/blockout/README.BlockOut.txt"
+
+          # Desktop entry and icon (using placeholder)
+          cat > "${DEBROOT}/usr/share/applications/blockout.desktop" <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BlockOut II
+Exec=/usr/local/games/blockout/blockout
+Icon=blockout
+Terminal=false
+Categories=Game;
+EOF
+          cp BlockOut/block_icon.ico "${DEBROOT}/usr/share/pixmaps/blockout.ico" || true
+
+          fakeroot dpkg-deb --build "${DEBROOT}"
+          echo "DEB_PATH=${DEBROOT}.deb" >> $GITHUB_ENV
+          echo "PKG_NAME=${PKG_NAME}" >> $GITHUB_ENV
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG_NAME }}-${{ matrix.distro }}
+          path: ${{ env.DEB_PATH }}
+
+      - name: Attach to GitHub Release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.DEB_PATH }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
