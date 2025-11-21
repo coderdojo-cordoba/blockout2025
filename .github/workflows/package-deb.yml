@@ -62,19 +62,17 @@ jobs:
           mkdir -p "${DEBROOT}/usr/share/applications"
           mkdir -p "${DEBROOT}/usr/share/pixmaps"
 
-          cat > "${DEBROOT}/DEBIAN/control" <<'EOF'
-Package: blockout
-Version: VERSION_PLACEHOLDER
-Section: games
-Priority: optional
-Architecture: amd64
-Depends: libc6, libglu1-mesa, libgl1, libxext6, libsdl1.2debian, libsdl-mixer1.2
-Maintainer: maintainer@example.com
-Description: BlockOut II for Linux (packaged)
- BlockOut II packaged for Ubuntu. Includes binary and assets.
-EOF
-          sed -i "s/VERSION_PLACEHOLDER/${VERSION}/" "${DEBROOT}/DEBIAN/control"
-          sed -i "s/maintainer@example.com/${GITHUB_ACTOR}@users.noreply.github.com/" "${DEBROOT}/DEBIAN/control"
+          {
+            printf "Package: blockout\n"
+            printf "Version: %s\n" "${VERSION}"
+            printf "Section: games\n"
+            printf "Priority: optional\n"
+            printf "Architecture: amd64\n"
+            printf "Depends: libc6, libglu1-mesa, libgl1, libxext6, libsdl1.2debian, libsdl-mixer1.2\n"
+            printf "Maintainer: %s@users.noreply.github.com\n" "${GITHUB_ACTOR}"
+            printf "Description: BlockOut II for Linux (packaged)\n"
+            printf " BlockOut II packaged for Ubuntu. Includes binary and assets.\n"
+          } > "${DEBROOT}/DEBIAN/control"
 
           install -m 755 BlockOut/blockout "${DEBROOT}/usr/local/games/blockout/"
           cp -r BlockOut/images "${DEBROOT}/usr/local/games/blockout/"
@@ -82,16 +80,17 @@ EOF
           cp README.txt "${DEBROOT}/usr/local/games/blockout/"
           cp BlockOut/README.txt "${DEBROOT}/usr/local/games/blockout/README.BlockOut.txt"
 
-          cat > "${DEBROOT}/usr/share/applications/blockout.desktop" <<'EOF'
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=BlockOut II
-Exec=/usr/local/games/blockout/blockout
-Icon=blockout
-Terminal=false
-Categories=Game;
-EOF
+          {
+            printf "[Desktop Entry]\n"
+            printf "Version=1.0\n"
+            printf "Type=Application\n"
+            printf "Name=BlockOut II\n"
+            printf "Exec=/usr/local/games/blockout/blockout\n"
+            printf "Icon=blockout\n"
+            printf "Terminal=false\n"
+            printf "Categories=Game;\n"
+          } > "${DEBROOT}/usr/share/applications/blockout.desktop"
+
           cp BlockOut/block_icon.ico "${DEBROOT}/usr/share/pixmaps/blockout.ico" || true
 
           fakeroot dpkg-deb --build "${DEBROOT}"
