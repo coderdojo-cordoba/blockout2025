@@ -13,6 +13,9 @@ on:
       - "build-and-run.sh"
       - "install-ubuntu-deps.sh"
 
+permissions:
+  contents: write
+
 jobs:
   build-release:
     runs-on: ubuntu-24.04
