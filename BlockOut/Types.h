@@ -16,11 +16,13 @@
 */
 
 #include "GLApp/GLApp.h"
+#include "I18n.h"
 
 #ifndef TYPESH
 #define TYPESH
 
-#define STR(x) ((char *)x)
+// For translatable UI strings
+#define STR(x) _(x)
 
 #ifdef WINDOWS
 
@@ -210,8 +212,8 @@ extern void ZeroMemory(void *buff,int size);
 #endif
 extern BOOL DirExists(char *dirname);
 extern BOOL CheckEnv();
-extern char *LID(char *fileName);
-extern char *LHD(char *fileName);
+extern char *LID(const char *fileName);
+extern char *LHD(const char *fileName);
 extern int DebugEnabled();
 extern void DebugLog(const char *fmt, ...);
 

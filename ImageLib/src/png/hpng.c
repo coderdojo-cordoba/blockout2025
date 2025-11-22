@@ -122,7 +122,7 @@ int LoadPngImage(PNG_IMAGE *d) {
 
 // ---------------------------------------------------------------------
 
-char *WritePngImage(char *file_name,unsigned long width,unsigned long height,unsigned char *data) {
+char *WritePngImage(const char *file_name,unsigned long width,unsigned long height,unsigned char *data) {
 
    FILE *fp;
    png_structp png_ptr;

@@ -1,0 +1,323 @@
+# BlockOut II Portuguese Translation
+# Copyright (C) 2025 BlockOut Team
+# This file is distributed under the same license as the BlockOut package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BlockOut 2.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-22 02:00+0000\n"
+"PO-Revision-Date: 2025-01-22 02:00+0000\n"
+"Last-Translator: BlockOut Team\n"
+"Language-Team: Portuguese\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Main Menu
+msgid "MAIN MENU"
+msgstr "MENU PRINCIPAL"
+
+msgid "Start Game  "
+msgstr "Iniciar Jogo"
+
+msgid "Choose Setup"
+msgstr "Escolher Configuracao"
+
+msgid "Hall of Fame"
+msgstr "Salao da Fama"
+
+msgid "Online Score"
+msgstr "Pontuacao Online"
+
+msgid "Options     "
+msgstr "Opcoes      "
+
+msgid "Write Setup "
+msgstr "Salvar Configuracao"
+
+msgid "[Done]"
+msgstr "[Concluido]"
+
+msgid "Demo        "
+msgstr "Demonstracao"
+
+msgid "Practice    "
+msgstr "Pratica     "
+
+msgid "Credits     "
+msgstr "Creditos    "
+
+msgid "Quit        "
+msgstr "Sair        "
+
+# Options Menu
+msgid "OPTIONS"
+msgstr "OPCOES"
+
+msgid "Controls          "
+msgstr "Controles         "
+
+msgid "Graphics & Sound  "
+msgstr "Graficos e Som    "
+
+msgid "HTTP              "
+msgstr "HTTP              "
+
+# Graphics & Sound Options
+msgid "GRAPHICS & SOUND"
+msgstr "GRAFICOS E SOM"
+
+msgid "Sound            :"
+msgstr "Som              :"
+
+msgid "Enabled"
+msgstr "Ativado"
+
+msgid "Disabled"
+msgstr "Desativado"
+
+msgid "FullScreen       :"
+msgstr "Tela Cheia       :"
+
+msgid "Screen Size      :"
+msgstr "Tamanho da Tela  :"
+
+msgid "Window Size      :"
+msgstr "Tamanho da Janela:"
+
+msgid "Rotation Speed   :"
+msgstr "Velocidade de Rotacao:"
+
+msgid "S[           ]F"
+msgstr "L[           ]R"
+
+msgid "Transparent face :"
+msgstr "Face Transparente:"
+
+msgid "T[           ]O"
+msgstr "T[           ]O"
+
+msgid "Style            :"
+msgstr "Estilo           :"
+
+msgid "Sound preset     :"
+msgstr "Preset de Som    :"
+
+msgid "Frame limiter    :"
+msgstr "Limitador de FPS :"
+
+msgid "Line width       :"
+msgstr "Largura da Linha :"
+
+# Choose Setup
+msgid "CHOOSE SETUP"
+msgstr "ESCOLHER CONFIGURACAO"
+
+msgid "Change Setup  "
+msgstr "Mudar Configuracao"
+
+msgid "CHANGE SETUP"
+msgstr "MUDAR CONFIGURACAO"
+
+msgid "Block Set  :"
+msgstr "Conjunto de Blocos:"
+
+msgid "Block Set:FLAT"
+msgstr "Conjunto de Blocos:PLANO"
+
+msgid "Block Set:BASIC"
+msgstr "Conjunto de Blocos:BASICO"
+
+msgid "Block Set:EXTENDED"
+msgstr "Conjunto de Blocos:ESTENDIDO"
+
+# Setups
+msgid "[Flat Fun]"
+msgstr "[Diversao Plana]"
+
+msgid "Flat Fun      "
+msgstr "Diversao Plana"
+
+msgid "[3D Mania]"
+msgstr "[Mania 3D]"
+
+msgid "3D Mania      "
+msgstr "Mania 3D      "
+
+msgid "[Out of Control]"
+msgstr "[Fora de Controle]"
+
+msgid "Out of Control"
+msgstr "Fora de Controle"
+
+# Game Controls
+msgid "GAME CONTROLS"
+msgstr "CONTROLES DO JOGO"
+
+msgid "[Cursor]Move [Space]Drop [P]Pause"
+msgstr "[Cursor]Mover [Espaco]Soltar [P]Pausa"
+
+msgid "[AZERTY]"
+msgstr "[AZERTY]"
+
+# HTTP Options
+msgid "HTTP OPTIONS"
+msgstr "OPCOES HTTP"
+
+msgid "HTTP proxy:"
+msgstr "Proxy HTTP:"
+
+msgid "Home      :"
+msgstr "Inicio    :"
+
+msgid "Auto:"
+msgstr "Auto:"
+
+msgid "Downloading..."
+msgstr "Baixando..."
+
+msgid "Download error:"
+msgstr "Erro no download:"
+
+# Credits
+msgid "CREDITS"
+msgstr "CREDITOS"
+
+# Start Game
+msgid "START GAME"
+msgstr "INICIAR JOGO"
+
+msgid "Pit Width  :"
+msgstr "Largura do Poco:"
+
+msgid "Pit Height :"
+msgstr "Altura do Poco:"
+
+msgid "Pit Depth  :"
+msgstr "Profundidade do Poco:"
+
+msgid "Start Level:"
+msgstr "Nivel Inicial:"
+
+# Game messages
+msgid "PAUSED"
+msgstr "PAUSADO"
+
+msgid "GAME OVER"
+msgstr "FIM DE JOGO"
+
+msgid "Score:"
+msgstr "Pontuacao:"
+
+msgid "Level:"
+msgstr "Nivel:"
+
+msgid "Lines:"
+msgstr "Linhas:"
+
+msgid "Cubes:"
+msgstr "Cubos:"
+
+msgid "Time:"
+msgstr "Tempo:"
+
+# Hall of Fame
+msgid "HALL OF FAME"
+msgstr "SALAO DA FAMA"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Score"
+msgstr "Pontuacao"
+
+msgid "Rank"
+msgstr "Classificacao"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Upload"
+msgstr "Enviar"
+
+msgid "Replay"
+msgstr "Repetir"
+
+msgid "Delete"
+msgstr "Excluir"
+
+# Score Details
+msgid "SCORE DETAILS"
+msgstr "DETALHES DA PONTUACAO"
+
+msgid "Setup:"
+msgstr "Configuracao:"
+
+msgid "Player:"
+msgstr "Jogador:"
+
+msgid "Empty pit:"
+msgstr "Poco vazio:"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "No"
+msgstr "Nao"
+
+# Common
+msgid "OK"
+msgstr "OK"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Back"
+msgstr "Voltar"
+
+msgid "Next"
+msgstr "Proximo"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Close"
+msgstr "Fechar"
+
+# Styles
+msgid "Classic"
+msgstr "Classico"
+
+msgid "Marble"
+msgstr "Marmore"
+
+msgid "Arcade"
+msgstr "Arcade"
+
+# Sound presets
+msgid "BlockOut II"
+msgstr "BlockOut II"
+
+msgid "BlockOut DOS"
+msgstr "BlockOut DOS"
+
+# Frame limiters
+msgid "No Limit"
+msgstr "Sem Limite"
+
+msgid "50 FPS"
+msgstr "50 FPS"
+
+msgid "60 FPS"
+msgstr "60 FPS"
+
+msgid "75 FPS"
+msgstr "75 FPS"
+
+msgid "100 FPS"
+msgstr "100 FPS"
+
+msgid "VSync"
+msgstr "VSync"

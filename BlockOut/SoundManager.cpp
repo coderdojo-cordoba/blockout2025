@@ -82,7 +82,7 @@ void SoundManager::SetEnable(BOOL enable) {
 
 // ------------------------------------------------
 
-int SoundManager::InitSound(char *fileName,Mix_Chunk **snd) {
+int SoundManager::InitSound(const char *fileName,Mix_Chunk **snd) {
 
   *snd = Mix_LoadWAV ( fileName );
   if( *snd == NULL ) {

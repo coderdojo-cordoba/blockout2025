@@ -2,13 +2,14 @@
 // Simple 2D font
 // -----------------------------------------------
 #include "GLFont.h"
+#include "../I18n.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #undef LoadImage
 #include <CImage.h>
 
-extern char *LID(char *fileName);
+extern char *LID(const char *fileName);
 
 // -------------------------------------------
 
@@ -21,7 +22,8 @@ int GLFont2D::RestoreDeviceObjects(int scrWidth,int scrHeight) {
 
   // Load the image
   CImage img;
-  if( !img.LoadImage(LID((char *)"images/font.png")) ) {
+  const char* fontFile = GetLocalizedAsset("images/font.png");
+  if( !img.LoadImage(LID((char *)fontFile)) ) {
 #ifdef WINDOWS
     char message[256];
 	sprintf(message,"Failed to load %s\n",LID((char *)"images/font.png"));
@@ -118,7 +120,7 @@ void GLFont2D::DrawText(int x,int y,char *text) {
 
   for(int i=0;i<lgth;i++ ) {
 
-    char  c = text[i];
+    unsigned char c = (unsigned char)text[i];
     float xPos = (float)((c % 16) * 16 + 1)/ (float)fWidth;
     float yPos = (float)((c / 16) * 16 )/ (float)fHeight;
     float cW   = 9.0f / (float)fWidth;

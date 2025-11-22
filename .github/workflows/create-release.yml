@@ -42,7 +42,7 @@ jobs:
         cp BlockOut/blockout dist/blockout/
         cp -r BlockOut/images dist/blockout/
         cp -r BlockOut/sounds dist/blockout/
-        cp README.txt dist/blockout/
+        cp README.md dist/blockout/
         cp BlockOut/README.txt dist/blockout/README.BlockOut.txt
         
         cd dist
@@ -90,10 +90,18 @@ jobs:
       with:
         name: blockout-linux-tarball
 
-    - name: Wait for builds to complete
+    - name: Wait for platform builds to complete
       run: |
-        echo "Waiting 10 minutes for platform builds to complete..."
-        sleep 600
+        echo "Waiting 15 minutes for all platform builds to complete..."
+        echo "This allows time for Windows, macOS, Fedora RPM, Arch, and Ubuntu/Debian builds to finish."
+        sleep 900
+
+    - name: Download all release artifacts
+      uses: actions/download-artifact@v4
+      with:
+        pattern: '*'
+        path: release-artifacts/
+        merge-multiple: true
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
@@ -129,5 +137,6 @@ jobs:
         prerelease: false
         files: |
           blockout-linux-x64-*.tar.gz
+          release-artifacts/**
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
