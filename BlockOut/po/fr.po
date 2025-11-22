@@ -1,0 +1,323 @@
+# BlockOut II French Translation
+# Copyright (C) 2025 BlockOut Team
+# This file is distributed under the same license as the BlockOut package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BlockOut 2.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-22 02:00+0000\n"
+"PO-Revision-Date: 2025-01-22 02:00+0000\n"
+"Last-Translator: BlockOut Team\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Main Menu
+msgid "MAIN MENU"
+msgstr "MENU PRINCIPAL"
+
+msgid "Start Game  "
+msgstr "Démarrer Jeu"
+
+msgid "Choose Setup"
+msgstr "Choisir Configuration"
+
+msgid "Hall of Fame"
+msgstr "Tableau d'Honneur"
+
+msgid "Online Score"
+msgstr "Score en Ligne"
+
+msgid "Options     "
+msgstr "Options     "
+
+msgid "Write Setup "
+msgstr "Sauvegarder Configuration"
+
+msgid "[Done]"
+msgstr "[Terminé]"
+
+msgid "Demo        "
+msgstr "Démonstration"
+
+msgid "Practice    "
+msgstr "Pratique    "
+
+msgid "Credits     "
+msgstr "Crédits     "
+
+msgid "Quit        "
+msgstr "Quitter     "
+
+# Options Menu
+msgid "OPTIONS"
+msgstr "OPTIONS"
+
+msgid "Controls          "
+msgstr "Contrôles         "
+
+msgid "Graphics & Sound  "
+msgstr "Graphiques et Son "
+
+msgid "HTTP              "
+msgstr "HTTP              "
+
+# Graphics & Sound Options
+msgid "GRAPHICS & SOUND"
+msgstr "GRAPHIQUES ET SON"
+
+msgid "Sound            :"
+msgstr "Son              :"
+
+msgid "Enabled"
+msgstr "Activé"
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "FullScreen       :"
+msgstr "Plein Écran      :"
+
+msgid "Screen Size      :"
+msgstr "Taille d'Écran   :"
+
+msgid "Window Size      :"
+msgstr "Taille de Fenêtre:"
+
+msgid "Rotation Speed   :"
+msgstr "Vitesse de Rotation:"
+
+msgid "S[           ]F"
+msgstr "L[           ]R"
+
+msgid "Transparent face :"
+msgstr "Face Transparente:"
+
+msgid "T[           ]O"
+msgstr "T[           ]O"
+
+msgid "Style            :"
+msgstr "Style            :"
+
+msgid "Sound preset     :"
+msgstr "Préréglage Son   :"
+
+msgid "Frame limiter    :"
+msgstr "Limiteur de FPS  :"
+
+msgid "Line width       :"
+msgstr "Largeur de Ligne :"
+
+# Choose Setup
+msgid "CHOOSE SETUP"
+msgstr "CHOISIR CONFIGURATION"
+
+msgid "Change Setup  "
+msgstr "Changer Configuration"
+
+msgid "CHANGE SETUP"
+msgstr "CHANGER CONFIGURATION"
+
+msgid "Block Set  :"
+msgstr "Ensemble de Blocs:"
+
+msgid "Block Set:FLAT"
+msgstr "Ensemble de Blocs:PLAT"
+
+msgid "Block Set:BASIC"
+msgstr "Ensemble de Blocs:BASIQUE"
+
+msgid "Block Set:EXTENDED"
+msgstr "Ensemble de Blocs:ÉTENDU"
+
+# Setups
+msgid "[Flat Fun]"
+msgstr "[Plaisir Plat]"
+
+msgid "Flat Fun      "
+msgstr "Plaisir Plat  "
+
+msgid "[3D Mania]"
+msgstr "[Folie 3D]"
+
+msgid "3D Mania      "
+msgstr "Folie 3D      "
+
+msgid "[Out of Control]"
+msgstr "[Hors de Contrôle]"
+
+msgid "Out of Control"
+msgstr "Hors de Contrôle"
+
+# Game Controls
+msgid "GAME CONTROLS"
+msgstr "CONTRÔLES DU JEU"
+
+msgid "[Cursor]Move [Space]Drop [P]Pause"
+msgstr "[Curseur]Déplacer [Espace]Lâcher [P]Pause"
+
+msgid "[AZERTY]"
+msgstr "[AZERTY]"
+
+# HTTP Options
+msgid "HTTP OPTIONS"
+msgstr "OPTIONS HTTP"
+
+msgid "HTTP proxy:"
+msgstr "Proxy HTTP:"
+
+msgid "Home      :"
+msgstr "Accueil   :"
+
+msgid "Auto:"
+msgstr "Auto:"
+
+msgid "Downloading..."
+msgstr "Téléchargement..."
+
+msgid "Download error:"
+msgstr "Erreur de téléchargement:"
+
+# Credits
+msgid "CREDITS"
+msgstr "CRÉDITS"
+
+# Start Game
+msgid "START GAME"
+msgstr "DÉMARRER JEU"
+
+msgid "Pit Width  :"
+msgstr "Largeur du Puits:"
+
+msgid "Pit Height :"
+msgstr "Hauteur du Puits:"
+
+msgid "Pit Depth  :"
+msgstr "Profondeur du Puits:"
+
+msgid "Start Level:"
+msgstr "Niveau de Départ:"
+
+# Game messages
+msgid "PAUSED"
+msgstr "EN PAUSE"
+
+msgid "GAME OVER"
+msgstr "JEU TERMINÉ"
+
+msgid "Score:"
+msgstr "Score:"
+
+msgid "Level:"
+msgstr "Niveau:"
+
+msgid "Lines:"
+msgstr "Lignes:"
+
+msgid "Cubes:"
+msgstr "Cubes:"
+
+msgid "Time:"
+msgstr "Temps:"
+
+# Hall of Fame
+msgid "HALL OF FAME"
+msgstr "TABLEAU D'HONNEUR"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Score"
+msgstr "Score"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Upload"
+msgstr "Téléverser"
+
+msgid "Replay"
+msgstr "Rejouer"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+# Score Details
+msgid "SCORE DETAILS"
+msgstr "DÉTAILS DU SCORE"
+
+msgid "Setup:"
+msgstr "Configuration:"
+
+msgid "Player:"
+msgstr "Joueur:"
+
+msgid "Empty pit:"
+msgstr "Puits vide:"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "No"
+msgstr "Non"
+
+# Common
+msgid "OK"
+msgstr "OK"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Close"
+msgstr "Fermer"
+
+# Styles
+msgid "Classic"
+msgstr "Classique"
+
+msgid "Marble"
+msgstr "Marbre"
+
+msgid "Arcade"
+msgstr "Arcade"
+
+# Sound presets
+msgid "BlockOut II"
+msgstr "BlockOut II"
+
+msgid "BlockOut DOS"
+msgstr "BlockOut DOS"
+
+# Frame limiters
+msgid "No Limit"
+msgstr "Sans Limite"
+
+msgid "50 FPS"
+msgstr "50 FPS"
+
+msgid "60 FPS"
+msgstr "60 FPS"
+
+msgid "75 FPS"
+msgstr "75 FPS"
+
+msgid "100 FPS"
+msgstr "100 FPS"
+
+msgid "VSync"
+msgstr "VSync"
