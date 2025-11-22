@@ -21,7 +21,8 @@ int GLFont2D::RestoreDeviceObjects(int scrWidth,int scrHeight) {
 
   // Load the image
   CImage img;
-  if( !img.LoadImage(LID((char *)"images/font.png")) ) {
+  const char* fontFile = GetLocalizedAsset("images/font.png");
+  if( !img.LoadImage(LID((char *)fontFile)) ) {
 #ifdef WINDOWS
     char message[256];
 	sprintf(message,"Failed to load %s\n",LID((char *)"images/font.png"));

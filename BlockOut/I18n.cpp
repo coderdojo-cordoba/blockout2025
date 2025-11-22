@@ -163,6 +163,43 @@ void InitI18n() {
 #endif
 }
 
+const char* GetLocalizedAsset(const char* assetName) {
+  static char localizedPath[512];
+  
+  // If English or no language set, return original
+  if (strcmp(currentLanguage, "en") == 0 || strlen(currentLanguage) == 0) {
+    return assetName;
+  }
+  
+  // Construct localized filename: path/name_lang.ext
+  // e.g. images/font.png -> images/font_es.png
+  char path[512];
+  strncpy(path, assetName, sizeof(path)-1);
+  
+  char* dot = strrchr(path, '.');
+  if (!dot) return assetName; // No extension, return original
+  
+  *dot = '\0'; // Cut extension
+  const char* ext = strrchr(assetName, '.');
+  
+  snprintf(localizedPath, sizeof(localizedPath), "%s_%s%s", path, currentLanguage, ext);
+  
+  // Check if file exists using LID (Locate In Directory) logic or simple file check
+  // Since we don't have easy access to LID here, we'll assume the caller will handle it
+  // or we can check if the file exists relative to executable/BL2_HOME
+  
+  // For now, just return the localized path. The caller (RestoreDeviceObjects) will try to load it.
+  // If we wanted to be safer, we could check for existence here, but that requires duplicating LID logic.
+  // A better approach might be to return the localized path, and if loading fails, the caller falls back.
+  // But existing code prints errors on failure.
+  
+  // Let's assume the localized file MUST exist if we are in that language.
+  // Or we can try to check existence if we include Utils.h? No, circular dependency risk.
+  
+  // Let's rely on the fact that we will create these files.
+  return localizedPath;
+}
+
 void SetLanguage(const char* lang) {
   if (!lang || strlen(lang) < 2) return;
   

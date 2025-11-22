@@ -137,10 +137,10 @@ int Menu::Create(int width,int height) {
   // Font
   wFont = fround( (float)width  * 0.0205f );
   hFont = fround( (float)height * 0.0449f );
-  if( !font.RestoreDeviceObjects(STR("images/menufont.png"),STR("none"),width,height) )
+  if( !font.RestoreDeviceObjects(STR(GetLocalizedAsset("images/menufont.png")),STR("none"),width,height) )
     return GL_FAIL;
 
-  if(!font2.RestoreDeviceObjects(STR("images/menufont2.png"),STR("none"),width,height))
+  if(!font2.RestoreDeviceObjects(STR(GetLocalizedAsset("images/menufont2.png")),STR("none"),width,height))
     return GL_FAIL;
 
   // onLine logo
