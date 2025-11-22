@@ -47,8 +47,8 @@ jobs:
 
           # Copy sources to the build directory
           cp BlockOut/blockout "${WORK}/"
-          cp -r BlockOut/images "${WORK}/"
-          cp -r BlockOut/sounds "${WORK}/"
+          tar -czf "${WORK}/images.tar.gz" -C BlockOut images
+          tar -czf "${WORK}/sounds.tar.gz" -C BlockOut sounds
           cp README.txt "${WORK}/"
           cp BlockOut/README.txt "${WORK}/README.BlockOut.txt"
           cp BlockOut/block_icon.ico "${WORK}/"
@@ -62,7 +62,7 @@ jobs:
             echo "arch=('x86_64')"
             echo "depends=('sdl' 'sdl_mixer' 'mesa' 'glu' 'libxext' 'alsa-lib')"
             echo "license=('GPL2')"
-            echo "source=('blockout' 'images' 'sounds' 'README.txt' 'README.BlockOut.txt' 'block_icon.ico')"
+            echo "source=('blockout' 'images.tar.gz' 'sounds.tar.gz' 'README.txt' 'README.BlockOut.txt' 'block_icon.ico')"
             echo "sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')"
             echo ""
             echo "package() {"
