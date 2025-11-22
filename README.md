@@ -30,6 +30,12 @@ Have fun with BlockOut II...
 - [Română](docs/README.ro.md)
 - [中文](docs/README.zh.md)
 - [日本語](docs/README.ja.md)
+- [Gaeilge](docs/README.ga.md)
+- [Ελληνικά](docs/README.el.md)
+- [Nederlands](docs/README.nl.md)
+- [Dansk](docs/README.da.md)
+- [Català](docs/README.ca.md)
+- [Norsk](docs/README.no.md)
 
 ## 📦 Downloads
 
