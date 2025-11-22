@@ -36,6 +36,13 @@ Have fun with BlockOut II...
 - [Dansk](docs/README.da.md)
 - [Català](docs/README.ca.md)
 - [Norsk](docs/README.no.md)
+- [Čeština](docs/README.cs.md)
+- [Suomi](docs/README.fi.md)
+- [Svenska](docs/README.sv.md)
+- [Eesti](docs/README.et.md)
+- [Türkçe](docs/README.tr.md)
+- [Afrikaans](docs/README.af.md)
+- [العربية](docs/README.ar.md)
 
 ## 📦 Downloads
 

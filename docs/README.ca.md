@@ -36,6 +36,13 @@ Gaudeix de BlockOut II...
 - [Dansk](README.da.md)
 - [Català](README.ca.md) (aquest fitxer)
 - [Norsk](README.no.md)
+- [Čeština](README.cs.md)
+- [Suomi](README.fi.md)
+- [Svenska](README.sv.md)
+- [Eesti](README.et.md)
+- [Türkçe](README.tr.md)
+- [Afrikaans](README.af.md)
+- [العربية](README.ar.md)
 
 ## 📦 Descàrregues
 
