@@ -11,6 +11,9 @@ on:
       - "ImageLib/**"
       - ".github/workflows/build-windows.yml"
 
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
