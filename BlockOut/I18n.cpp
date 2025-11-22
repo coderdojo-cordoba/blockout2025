@@ -48,12 +48,12 @@ static const char* GetLocaleDir() {
 #else
   // Check if BL2_HOME is set
   const char* bl2Home = getenv("BL2_HOME");
-  if (bl2Home) {
+  if (bl2Home && strlen(bl2Home) > 0) {
     static char localeDir[512];
     snprintf(localeDir, sizeof(localeDir), "%s/locale", bl2Home);
     return localeDir;
   }
-  // Try current directory
+  // Fallback to current directory
   return "./locale";
 #endif
 }
@@ -68,8 +68,10 @@ void InitI18n() {
   bindtextdomain("blockout", localeDir);
   textdomain("blockout");
   
-  // Try to detect system language
+  // Try to detect system language, fallback to English
   const char* lang = getenv("LANG");
+  bool langFound = false;
+  
   if (lang && strlen(lang) >= 2) {
     char langCode[3];
     langCode[0] = lang[0];
@@ -80,9 +82,15 @@ void InitI18n() {
     for (int i = 0; availableLanguages[i] != NULL; i++) {
       if (strcmp(langCode, availableLanguages[i]) == 0) {
         strncpy(currentLanguage, langCode, sizeof(currentLanguage) - 1);
+        langFound = true;
         break;
       }
     }
+  }
+  
+  // Fallback to English if LANG not set or unsupported
+  if (!langFound) {
+    strncpy(currentLanguage, "en", sizeof(currentLanguage) - 1);
   }
 #endif
 }
