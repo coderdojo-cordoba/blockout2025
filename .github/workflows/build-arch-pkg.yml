@@ -44,6 +44,15 @@ jobs:
           PKG_VERSION=${PKG_VERSION//[^A-Za-z0-9._]/_}
           WORK=/home/builder/pkg
           mkdir -p "${WORK}"
+
+          # Copy sources to the build directory
+          cp BlockOut/blockout "${WORK}/"
+          cp -r BlockOut/images "${WORK}/"
+          cp -r BlockOut/sounds "${WORK}/"
+          cp README.txt "${WORK}/"
+          cp BlockOut/README.txt "${WORK}/README.BlockOut.txt"
+          cp BlockOut/block_icon.ico "${WORK}/"
+
           PKGBUILD_PATH="${WORK}/PKGBUILD"
           {
             echo "pkgname=blockout"
@@ -53,17 +62,16 @@ jobs:
             echo "arch=('x86_64')"
             echo "depends=('sdl' 'sdl_mixer' 'mesa' 'glu' 'libxext' 'alsa-lib')"
             echo "license=('GPL2')"
-            echo "source=('local::file://${PWD}/BlockOut/blockout' 'local::file://${PWD}/BlockOut/images' 'local::file://${PWD}/BlockOut/sounds' 'local::file://${PWD}/README.txt' 'local::file://${PWD}/BlockOut/README.txt' 'local::file://${PWD}/BlockOut/block_icon.ico')"
-            echo "noextract=('blockout' 'images' 'sounds' 'README.txt' 'README.txt' 'block_icon.ico')"
+            echo "source=('blockout' 'images' 'sounds' 'README.txt' 'README.BlockOut.txt' 'block_icon.ico')"
             echo "sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')"
             echo ""
             echo "package() {"
             echo "  mkdir -p \"\${pkgdir}/usr/local/games/blockout\""
-            echo "  install -m755 \${srcdir}/blockout \"\${pkgdir}/usr/local/games/blockout/\""
-            echo "  cp -r \${srcdir}/images \"\${pkgdir}/usr/local/games/blockout/\""
-            echo "  cp -r \${srcdir}/sounds \"\${pkgdir}/usr/local/games/blockout/\""
-            echo "  cp \${srcdir}/README.txt \"\${pkgdir}/usr/local/games/blockout/\""
-            echo "  cp \${srcdir}/README.txt \"\${pkgdir}/usr/local/games/blockout/README.BlockOut.txt\""
+            echo "  install -m755 \"\${srcdir}/blockout\" \"\${pkgdir}/usr/local/games/blockout/\""
+            echo "  cp -r \"\${srcdir}/images\" \"\${pkgdir}/usr/local/games/blockout/\""
+            echo "  cp -r \"\${srcdir}/sounds\" \"\${pkgdir}/usr/local/games/blockout/\""
+            echo "  cp \"\${srcdir}/README.txt\" \"\${pkgdir}/usr/local/games/blockout/\""
+            echo "  cp \"\${srcdir}/README.BlockOut.txt\" \"\${pkgdir}/usr/local/games/blockout/README.BlockOut.txt\""
             echo "  mkdir -p \"\${pkgdir}/usr/share/applications\""
             echo "  cat > \"\${pkgdir}/usr/share/applications/blockout.desktop\" <<'EOD'"
             echo "[Desktop Entry]"
@@ -76,11 +84,11 @@ jobs:
             echo "Categories=Game;"
             echo "EOD"
             echo "  mkdir -p \"\${pkgdir}/usr/share/pixmaps\""
-            echo "  cp \${srcdir}/block_icon.ico \"\${pkgdir}/usr/share/pixmaps/blockout.ico\""
+            echo "  cp \"\${srcdir}/block_icon.ico\" \"\${pkgdir}/usr/share/pixmaps/blockout.ico\""
             echo "}"
           } > "${PKGBUILD_PATH}"
           chown -R builder:builder "${WORK}"
-          sudo -u builder bash -lc "cd ${WORK} && makepkg --force --nodeps --noprepare --skippgpcheck --noextract"
+          sudo -u builder bash -lc "cd ${WORK} && makepkg --force --nodeps --skippgpcheck"
           mkdir -p dist
           cp ${WORK}/*.pkg.tar.* dist/
           echo "ARCH_PKG=$(ls dist/*.pkg.tar.*)" >> $GITHUB_ENV

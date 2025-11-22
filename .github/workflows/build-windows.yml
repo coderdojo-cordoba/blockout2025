@@ -1,0 +1,78 @@
+name: Build Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - development
+    paths:
+      - "BlockOut/**"
+      - "ImageLib/**"
+      - ".github/workflows/build-windows.yml"
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Download SDL 1.2 Devel
+      run: |
+        Invoke-WebRequest -Uri "https://www.libsdl.org/release/SDL-devel-1.2.15-VC.zip" -OutFile "SDL-devel-1.2.15-VC.zip"
+        Expand-Archive -Path "SDL-devel-1.2.15-VC.zip" -DestinationPath "C:\SDL"
+        
+    - name: Download SDL_mixer 1.2 Devel
+      run: |
+        Invoke-WebRequest -Uri "https://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-devel-1.2.12-VC.zip" -OutFile "SDL_mixer-devel-1.2.12-VC.zip"
+        Expand-Archive -Path "SDL_mixer-devel-1.2.12-VC.zip" -DestinationPath "C:\SDL"
+
+    - name: Build ImageLib
+      run: |
+        msbuild ImageLib/src/VC2013/ImageLib.vcxproj /p:Configuration=Release /p:Platform=x64
+
+    - name: Build BlockOut
+      run: |
+        $ImageLibSrc = Resolve-Path "ImageLib/src"
+        $ImageLibLib = Resolve-Path "ImageLib/src/VC2013/x64/Release"
+        msbuild BlockOut/VC2013/Blockout.vcxproj /p:Configuration=Release /p:Platform=x64 `
+          /p:AdditionalIncludeDirectories="$ImageLibSrc;C:\SDL\SDL-1.2.15\include;C:\SDL\SDL_mixer-1.2.12\include" `
+          /p:AdditionalLibraryDirectories="$ImageLibLib;C:\SDL\SDL-1.2.15\lib\x64;C:\SDL\SDL_mixer-1.2.12\lib\x64"
+
+    - name: Download SDL Runtime Binaries
+      run: |
+        Invoke-WebRequest -Uri "https://www.libsdl.org/release/SDL-1.2.15-win32-x64.zip" -OutFile "SDL-1.2.15-win32-x64.zip"
+        Expand-Archive -Path "SDL-1.2.15-win32-x64.zip" -DestinationPath "dist_sdl"
+        
+        # SDL_mixer 1.2.12 x64 binary might be tricky to find officially or might be in the devel package?
+        # The devel package lib/x64 usually only has the .lib.
+        # Let's try to get the x64 runtime if available, otherwise we might miss DLLs.
+        # Official site lists SDL_mixer-1.2.12-win32.zip (32-bit). x64 was not standard then.
+        # However, the devel package has x64 libs, so maybe there is a binary?
+        # If not, we might only get the exe and SDL.dll.
+        # Let's assume for now we just copy what we can.
+        
+    - name: Prepare Artifacts
+      run: |
+        New-Item -ItemType Directory -Force -Path dist
+        Copy-Item BlockOut/VC2013/x64/Release/Blockout.exe -Destination dist/
+        Copy-Item BlockOut/images -Destination dist/images -Recurse
+        Copy-Item BlockOut/sounds -Destination dist/sounds -Recurse
+        Copy-Item dist_sdl/SDL.dll -Destination dist/
+        
+        # Try to find SDL_mixer.dll in the devel package if it exists, or skip it
+        # C:\SDL\SDL_mixer-1.2.12\lib\x64 might have it?
+        if (Test-Path "C:\SDL\SDL_mixer-1.2.12\lib\x64\SDL_mixer.dll") {
+          Copy-Item "C:\SDL\SDL_mixer-1.2.12\lib\x64\SDL_mixer.dll" -Destination dist/
+        }
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: blockout-windows
+        path: dist/

@@ -71,6 +71,7 @@ jobs:
           tar -czf ${RPMBUILD}/SOURCES/blockout.tar.gz -C ${PKGROOT} .
           SPEC=${RPMBUILD}/SPECS/blockout.spec
           {
+            echo "%global debug_package %{nil}"
             echo "Name:           blockout"
             echo "Version:        ${VERSION}"
             echo "Release:        ${RPM_RELEASE}%{?dist}"
