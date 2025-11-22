@@ -158,6 +158,67 @@ cd BlockOut
 ./blockout
 ```
 
+## 🤖 GitHub Actions CI/CD
+
+This repository uses GitHub Actions for automated building and releasing across all platforms. The workflows are triggered on pushes to `main` and `development` branches.
+
+### Available Workflows
+
+#### Build Workflows (Automated)
+
+- **`build-windows.yml`** - Builds Windows x64 binaries and creates a zip package
+  - Builds with Visual Studio 2022 (v143 toolset)
+  - Includes SDL runtime DLLs and game assets
+  - Outputs: `blockout-windows-*.zip`
+
+- **`build-macos-brew.yml`** - Builds macOS binaries using Homebrew dependencies
+  - Uses `sdl12-compat` for SDL 1.2 API compatibility
+  - Builds SDL_mixer 1.2 from source
+  - Outputs: `blockout-macos-*.tar.gz`
+
+- **`build-fedora-rpm.yml`** - Builds RPM packages for Fedora/RHEL
+  - Builds in Fedora container
+  - Outputs: `blockout-*.rpm`
+
+- **`build-arch-pkg.yml`** - Builds Arch Linux packages
+  - Uses `makepkg` in Arch container
+  - Outputs: `blockout-*.pkg.tar.zst`
+
+- **`package-deb.yml`** - Builds Debian packages for multiple Ubuntu versions
+  - Builds for Ubuntu 24.04, 25.04, and 25.10
+  - Outputs: `blockout-*-ubuntu*.deb`
+
+#### Release Workflow (Manual)
+
+- **`create-release.yml`** - Creates a new release (manual trigger only)
+  - Merges `development` into `main`
+  - Creates a version tag
+  - Builds a generic Linux x64 tarball
+  - Waits for all platform builds to complete
+  - Creates a GitHub Release with all platform packages
+  - **Usage**: Go to Actions → "Create Release" → Run workflow → Enter version (e.g., `v2.5.0`)
+
+### Triggering Builds
+
+All build workflows automatically trigger on:
+- Push to `main` or `development` branches
+- Changes to source files (`BlockOut/**`, `ImageLib/**`)
+- Changes to the workflow file itself
+
+You can also manually trigger any workflow from the GitHub Actions tab.
+
+### Release Process
+
+1. Ensure all changes are merged to `development` and tested
+2. Go to GitHub Actions → "Create Release" workflow
+3. Click "Run workflow"
+4. Enter the version number (e.g., `v2.5.0`)
+5. The workflow will:
+   - Merge `development` → `main`
+   - Create and push the version tag
+   - Build all platform packages
+   - Create a GitHub Release with all artifacts
+
 ## 🎯 Game Features
 
 ### Replay System
