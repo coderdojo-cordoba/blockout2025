@@ -145,7 +145,7 @@ void InitI18n() {
   // Bind text domain AFTER setting locale
   const char* localeDir = GetLocaleDir();
   bindtextdomain("blockout", localeDir);
-  bind_textdomain_codeset("blockout", "UTF-8"); // Ensure UTF-8 output
+  bind_textdomain_codeset("blockout", "ISO-8859-1"); // Use ISO-8859-1 for 8-bit font texture compatibility
   textdomain("blockout");
   
   if (debug) {

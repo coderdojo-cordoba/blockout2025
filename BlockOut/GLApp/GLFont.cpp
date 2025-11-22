@@ -118,7 +118,7 @@ void GLFont2D::DrawText(int x,int y,char *text) {
 
   for(int i=0;i<lgth;i++ ) {
 
-    char  c = text[i];
+    unsigned char c = (unsigned char)text[i];
     float xPos = (float)((c % 16) * 16 + 1)/ (float)fWidth;
     float yPos = (float)((c / 16) * 16 )/ (float)fHeight;
     float cW   = 9.0f / (float)fWidth;
