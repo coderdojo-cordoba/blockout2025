@@ -43,13 +43,18 @@ OBJ=    BlockOut.o         PageChooseSetup.o       PageStartGame.o \
 
 ADD_LIBS = ../ImageLib/src/libimagelib.a
 
+CXX		= g++
+
+ifdef _macos
+CXXFLAGS = -O2 -DMACOS -c -I../ImageLib/src -I. $(shell sdl-config --cflags)
+LFLAGS = $(ADD_LIBS) $(shell sdl-config --libs) -lSDL_mixer -framework OpenGL -framework GLUT -lm
+else
+
 ifdef _linux64
 SDL_LIBS = /usr/lib/x86_64-linux-gnu
 else
 SDL_LIBS = /usr/lib/i386-linux-gnu
 endif
-
-CXX		= g++
 
 ifdef _release
 
@@ -71,6 +76,7 @@ LFLAGS   =      -L $(SDL_LIBS) \
 		-lSDL_mixer -lSDL -lasound \
 		-lGL -lGLU -lpthread -lm -ldl
 
+endif
 endif
 
 

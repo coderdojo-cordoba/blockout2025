@@ -40,7 +40,7 @@ jobs:
       - name: Build ImageLib and BlockOut (release)
         run: |
           make -C ImageLib/src
-          make -C BlockOut _release=1 _linux64=1
+          make -C BlockOut _macos=1
 
       - name: Package app bundle
         run: |
