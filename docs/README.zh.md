@@ -30,6 +30,12 @@ BlockOut II 是原版 BlockOut DOS 游戏的 OpenGL 改编版，原版游戏由 
 - [Română](README.ro.md)
 - [中文](README.zh.md) (此文件)
 - [日本語](README.ja.md)
+- [Gaeilge](README.ga.md)
+- [Ελληνικά](README.el.md)
+- [Nederlands](README.nl.md)
+- [Dansk](README.da.md)
+- [Català](README.ca.md)
+- [Norsk](README.no.md)
 
 ## 📦 下载
 

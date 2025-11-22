@@ -30,6 +30,12 @@ Distracție plăcută cu BlockOut II...
 - [Română](README.ro.md) (acest fișier)
 - [中文](README.zh.md)
 - [日本語](README.ja.md)
+- [Gaeilge](README.ga.md)
+- [Ελληνικά](README.el.md)
+- [Nederlands](README.nl.md)
+- [Dansk](README.da.md)
+- [Català](README.ca.md)
+- [Norsk](README.no.md)
 
 ## 📦 Descărcări
 
