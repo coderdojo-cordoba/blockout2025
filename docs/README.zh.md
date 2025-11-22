@@ -1,55 +1,61 @@
 # BlockOut II v2.5
 
-![BlockOut II Gameplay](gameplay-screenshot.png)
+![BlockOut II Gameplay](../gameplay-screenshot.png)
 
-**A 3D Tetris-style puzzle game**
+**一个3D俄罗斯方块风格的益智游戏**
 
-BlockOut II is an OpenGL adaptation of the original BlockOut DOS game edited by California Dreams in 1989. BlockOut II has the same features as the original game with few graphic improvements. Score calculation is also nearly similar to the original game. BlockOut II has been designed by an addicted player for addicted players.
+BlockOut II 是原版 BlockOut DOS 游戏的 OpenGL 改编版，原版游戏由 California Dreams 于 1989 年发行。BlockOut II 拥有与原版游戏相同的功能，并进行了一些图形改进。分数计算也与原版游戏几乎相似。BlockOut II 是由一位沉迷其中的玩家为其他沉迷其中的玩家设计的。
 
-Have fun with BlockOut II...
-
----
-
-*Blockout® is a registered trademark of Kadon Enterprises, Inc., used by permission. This USA company produces hands-on sets of polycubes since 1980. [www.gamepuzzles.com](http://www.gamepuzzles.com)*
+尽情享受 BlockOut II...
 
 ---
 
-## 🌐 Official Home Page
+*Blockout® 是 Kadon Enterprises, Inc. 的注册商标，经许可使用。这家美国公司自 1980 年以来一直生产实用的多立方体套装。[www.gamepuzzles.com](http://www.gamepuzzles.com)*
+
+---
+
+## 🌐 官方主页
 
 **http://www.blockout.net/blockout2**
 
-## 🌍 Languages / Idiomas / Langues
+## 🌍 语言 / Idiomas / Langues
 
-- [English](README.md) (this file)
-- [Español](docs/README.es.md)
-- [Português](docs/README.pt.md)
-- [Français](docs/README.fr.md)
+- [English](../README.md)
+- [Español](README.es.md)
+- [Português](README.pt.md)
+- [Français](README.fr.md)
+- [Italiano](README.it.md)
+- [Deutsch](README.de.md)
+- [Polski](README.pl.md)
+- [Română](README.ro.md)
+- [中文](README.zh.md) (此文件)
+- [日本語](README.ja.md)
 
-## 📦 Downloads
+## 📦 下载
 
-Get the latest release for your platform from the [Releases page](https://github.com/lle0x/blockout2025/releases):
+从 [发布页面](https://github.com/lle0x/blockout2025/releases) 获取适用于您平台的最新版本：
 
-- **Windows**: `blockout-windows-*.zip` - Extract and run `Blockout.exe`
-- **Linux (Generic)**: `blockout-linux-x64-*.tar.gz` - Extract and run `./blockout/blockout`
-- **macOS**: `blockout-macos-*.tar.gz` - Extract and run the binary
-- **Ubuntu/Debian**: `blockout_*.deb` - Install with `sudo dpkg -i blockout_*.deb`
-- **Fedora/RHEL**: `blockout-*.rpm` - Install with `sudo dnf install blockout-*.rpm`
-- **Arch Linux**: `blockout-*.pkg.tar.zst` - Install with `sudo pacman -U blockout-*.pkg.tar.zst`
+- **Windows**: `blockout-windows-*.zip` - 解压并运行 `Blockout.exe`
+- **Linux (通用)**: `blockout-linux-x64-*.tar.gz` - 解压并运行 `./blockout/blockout`
+- **macOS**: `blockout-macos-*.tar.gz` - 解压并运行二进制文件
+- **Ubuntu/Debian**: `blockout_*.deb` - 使用 `sudo dpkg -i blockout_*.deb` 安装
+- **Fedora/RHEL**: `blockout-*.rpm` - 使用 `sudo dnf install blockout-*.rpm` 安装
+- **Arch Linux**: `blockout-*.pkg.tar.zst` - 使用 `sudo pacman -U blockout-*.pkg.tar.zst` 安装
 
-## 🎮 System Requirements
+## 🎮 系统要求
 
 ### Windows
-- OpenGL support
+- OpenGL 支持
 
 ### Linux
-**Runtime:**
+**运行时:**
 - `libgl1-mesa`
 - `libglu1-mesa`
 - `libxext6`
 - `libsdl1.2`
 - `libsdl-mixer1.2`
 
-**Build Dependencies:**
+**构建依赖:**
 - `build-essential`
 - `libgl1-mesa-dev`
 - `libglu1-mesa-dev`
@@ -59,201 +65,162 @@ Get the latest release for your platform from the [Releases page](https://github
 - `libasound2-dev`
 
 ### macOS
-- SDL 1.2 (via sdl12-compat)
+- SDL 1.2 (通过 sdl12-compat)
 - SDL_mixer 1.2
 - OpenGL
 
-## 📝 Version History
+## 📝 版本历史
 
 ### 2.5
-- 64-bit support
-- OpenGL is now used both on Linux and Windows
-- Little graphics improvements
-- Practice mode improvements
-- Improved the demo mode (Bot player plays better)
-- Local data directory moved from installation directory to "AppData" directory
+- 64位支持
+- OpenGL 现在在 Linux 和 Windows 上都使用
+- 小的图形改进
+- 练习模式改进
+- 改进的演示模式（Bot 玩家玩得更好）
+- 本地数据目录从安装目录移动到 "AppData" 目录
 
 ### 2.4
-- Added frame limiter
-- Added demo mode
-- Added practice mode
-- Fixed replay bug
-- Fixed random generator (FLAT block set)
-- Fixed fullscreen bug (Linux)
+- 添加了帧限制器
+- 添加了演示模式
+- 添加了练习模式
+- 修复了回放错误
+- 修复了随机生成器（FLAT 块集）
+- 修复了全屏错误（Linux）
 
 ### 2.3
-- Added player/rank name when replaying
-- New punctuation characters added
-- Little effect when rotation is blocked
-- Fixed "Cannot open blX.bl2replay for writing"
-- New style (Marble/Arcade)
-- Fixed crash when pressing [Esc]
-- Pit animation when the game is over
-- Jump to Score Details page after end of game
-- Added DOS blockout sound preset
-- New randomizer
+- 回放时添加了玩家/排名名称
+- 添加了新的标点符号
+- 旋转被阻止时的小效果
+- 修复了 "无法打开 blX.bl2replay 进行写入"
+- 新风格（大理石/街机）
+- 修复了按 [Esc] 时的崩溃
+- 游戏结束时的深坑动画
+- 游戏结束后跳转到分数详情页面
+- 添加了 DOS blockout 声音预设
+- 新的随机生成器
 
 ### 2.2
-- NUMPAD Key control added
-- Block transparency configurable with slider
-- Abort menu startup demo with [Esc]
-- Empty pit (Flush) in score details added
-- On-line score database
-- Replay
-- Credits page added
-- Other minor updates
+- 添加了数字键盘控制
+- 块透明度可通过滑块配置
+- 使用 [Esc] 中止菜单启动演示
+- 在分数详情中添加了空坑（Flush）
+- 在线分数数据库
+- 回放
+- 添加了致谢页面
+- 其他小更新
 
 ### 2.1
-- Fixed block descent algorithm
-- Increased a little bit drop time
-- Improved tuning of motion speed
+- 修复了块下降算法
+- 稍微增加了下降时间
+- 改进了运动速度的调整
 
 ### 2.0
-- Initial release
+- 初始版本
 
-## 🔧 Building from Source
+## 🔧 从源码编译
 
 ### Ubuntu/Debian
 
-**Automated:**
+**自动:**
 ```bash
 sudo ./install-ubuntu-deps.sh
 ./build-and-run.sh
 ```
 
-**Manual:**
+**手动:**
 ```bash
-# Install dependencies
+# 安装依赖
 sudo apt-get install build-essential libgl1-mesa-dev libglu1-mesa-dev \
   libxext-dev libsdl1.2-dev libsdl-mixer1.2-dev libasound2-dev
 
-# Build ImageLib
+# 构建 ImageLib
 make -C ImageLib/src
 
-# Build BlockOut
+# 构建 BlockOut
 make -C BlockOut _linux64=1 _release=1
 
-# Run
+# 运行
 cd BlockOut
 ./blockout
 ```
 
 ### Windows
 
-1. Install Microsoft Visual Studio 2022 (or 2019/2017)
-2. Install SDL 1.2.15 development libraries from [libsdl.org](http://www.libsdl.org)
-3. Install SDL_mixer 1.2.12 development libraries from [libsdl.org](http://www.libsdl.org/projects/SDL_mixer/release-1.2.html)
-4. Set appropriate include and lib paths in project properties
-5. Build the solution
+1. 安装 Microsoft Visual Studio 2022 (或 2019/2017)
+2. 从 [libsdl.org](http://www.libsdl.org) 安装 SDL 1.2.15 开发库
+3. 从 [libsdl.org](http://www.libsdl.org/projects/SDL_mixer/release-1.2.html) 安装 SDL_mixer 1.2.12 开发库
+4. 在项目属性中设置适当的包含和库路径
+5. 构建解决方案
 
 ### macOS
 
 ```bash
-# Install dependencies via Homebrew
+# 通过 Homebrew 安装依赖
 brew install sdl12-compat pkg-config
 
-# Build SDL_mixer 1.2 from source (see .github/workflows/build-macos-brew.yml)
+# 从源码构建 SDL_mixer 1.2 (参见 .github/workflows/build-macos-brew.yml)
 
-# Build ImageLib
+# 构建 ImageLib
 make -C ImageLib/src
 
-# Build BlockOut
+# 构建 BlockOut
 make -C BlockOut _macos=1
 
-# Run
+# 运行
 cd BlockOut
 ./blockout
 ```
 
 ## 🤖 GitHub Actions CI/CD
 
-This repository uses GitHub Actions for automated building and releasing across all platforms. The workflows are triggered on pushes to `main` and `development` branches.
+此存储库使用 GitHub Actions 在所有平台上进行自动构建和发布。
 
-### Available Workflows
+### 可用的工作流
 
-#### Build Workflows (Automated)
+#### 构建工作流（自动）
 
-- **`build-windows.yml`** - Builds Windows x64 binaries and creates a zip package
-  - Builds with Visual Studio 2022 (v143 toolset)
-  - Includes SDL runtime DLLs and game assets
-  - Outputs: `blockout-windows-*.zip`
+- **`build-windows.yml`** - 构建 Windows x64 二进制文件
+- **`build-macos-brew.yml`** - 构建 macOS 二进制文件
+- **`build-fedora-rpm.yml`** - 构建 RPM 包
+- **`build-arch-pkg.yml`** - 构建 Arch Linux 包
+- **`package-deb.yml`** - 构建 Debian 包
 
-- **`build-macos-brew.yml`** - Builds macOS binaries using Homebrew dependencies
-  - Uses `sdl12-compat` for SDL 1.2 API compatibility
-  - Builds SDL_mixer 1.2 from source
-  - Outputs: `blockout-macos-*.tar.gz`
+#### 发布工作流（手动）
 
-- **`build-fedora-rpm.yml`** - Builds RPM packages for Fedora/RHEL
-  - Builds in Fedora container
-  - Outputs: `blockout-*.rpm`
+- **`create-release.yml`** - 创建新版本
 
-- **`build-arch-pkg.yml`** - Builds Arch Linux packages
-  - Uses `makepkg` in Arch container
-  - Outputs: `blockout-*.pkg.tar.zst`
+### 发布流程
 
-- **`package-deb.yml`** - Builds Debian packages for multiple Ubuntu versions
-  - Builds for Ubuntu 24.04, 25.04, and 25.10
-  - Outputs: `blockout-*-ubuntu*.deb`
+1. 确保所有更改都已合并到 `development` 并经过测试
+2. 转到 GitHub Actions → "Create Release" 工作流
+3. 点击 "Run workflow"
+4. 输入版本号（例如 `v2.5.0`）
+5. 工作流将合并、标记、构建和发布
 
-#### Release Workflow (Manual)
+## 🎯 游戏特色
 
-- **`create-release.yml`** - Creates a new release (manual trigger only)
-  - Merges `development` into `main`
-  - Creates a version tag
-  - Builds a generic Linux x64 tarball
-  - Waits for all platform builds to complete
-  - Creates a GitHub Release with all platform packages
-  - **Usage**: Go to Actions → "Create Release" → Run workflow → Enter version (e.g., `v2.5.0`)
+### 回放系统
+对于您取得的每个高分，都会在回放目录中创建一个 `.bl2replay` 文件。
 
-### Triggering Builds
+### 分数上传
+从分数详情页面将您的高分上传到在线数据库。
 
-All build workflows automatically trigger on:
-- Push to `main` or `development` branches
-- Changes to source files (`BlockOut/**`, `ImageLib/**`)
-- Changes to the workflow file itself
+### 随机生成器
+BlockOut II 使用袋式随机生成器，生成随机排列的所有可能块的序列。
 
-You can also manually trigger any workflow from the GitHub Actions tab.
+### 帧限制器
+要将动画与显示器的垂直消隐同步，请在帧限制器设置中选择 VSync。
 
-### Release Process
+## 📜 许可证
 
-1. Ensure all changes are merged to `development` and tested
-2. Go to GitHub Actions → "Create Release" workflow
-3. Click "Run workflow"
-4. Enter the version number (e.g., `v2.5.0`)
-5. The workflow will:
-   - Merge `development` → `main`
-   - Create and push the version tag
-   - Build all platform packages
-   - Create a GitHub Release with all artifacts
+此程序是自由软件；您可以根据 GNU 通用公共许可证的条款重新分发和/或修改它。
 
-## 🎯 Game Features
-
-### Replay System
-For each high score you make, a `.bl2replay` file is created in the replay directory. These files contain replay data needed for uploading scores to the online database. A replay can be uploaded only once after successful registration.
-
-### Score Uploading
-Upload your high scores to the online database from the Score Details page. Only scores from version 2.2+ can be uploaded (replay file required).
-
-### Randomizer
-BlockOut II uses a bag randomizer that generates a sequence of all possible pieces (depending on pit dimension and block set) permuted randomly. It deals all pieces before generating another bag, preventing getting the same piece 3 times in a row.
-
-### Frame Limiter
-To synchronize animations with your monitor's vertical blanking, select VSync in the frame limiter settings, save, and restart the application.
-
-## 📜 License
-
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-
-## 👤 Author
+## 👤 作者
 
 Jean-Luc PONS (jlp_38@yahoo.com)
 
-## 🔗 Links
+## 🔗 链接
 
-- [Official Website](http://www.blockout.net/blockout2)
-- [GitHub Repository](https://github.com/lle0x/blockout2025)
+- [官方网站](http://www.blockout.net/blockout2)
+- [GitHub 存储库](https://github.com/lle0x/blockout2025)
 - [Kadon Enterprises](http://www.gamepuzzles.com)
