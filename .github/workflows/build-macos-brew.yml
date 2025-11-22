@@ -26,7 +26,17 @@ jobs:
       - name: Install deps (Homebrew)
         run: |
           brew update
-          brew install sdl12-compat sdl2_mixer pkg-config
+          brew install sdl12-compat pkg-config
+
+      - name: Build SDL_mixer 1.2 from source
+        run: |
+          cd /tmp
+          curl -L https://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.12.tar.gz -o SDL_mixer-1.2.12.tar.gz
+          tar xzf SDL_mixer-1.2.12.tar.gz
+          cd SDL_mixer-1.2.12
+          ./configure --prefix=/opt/homebrew
+          make
+          sudo make install
 
       - name: Set build env
         id: brew-env
