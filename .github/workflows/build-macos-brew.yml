@@ -26,7 +26,7 @@ jobs:
       - name: Install deps (Homebrew)
         run: |
           brew update
-          brew install sdl12-compat pkg-config
+          brew install sdl12-compat pkg-config gettext
 
       - name: Build SDL_mixer 1.2 from source
         run: |
@@ -42,9 +42,10 @@ jobs:
         id: brew-env
         run: |
           PREFIX=$(brew --prefix)
+          GETTEXT_PREFIX=$(brew --prefix gettext)
           echo "HOMEBREW_PREFIX=$PREFIX" >> $GITHUB_ENV
-          echo "CXXFLAGS=-I${PREFIX}/include" >> $GITHUB_ENV
-          echo "LDFLAGS=-L${PREFIX}/lib" >> $GITHUB_ENV
+          echo "CXXFLAGS=-I${PREFIX}/include -I${GETTEXT_PREFIX}/include" >> $GITHUB_ENV
+          echo "LDFLAGS=-L${PREFIX}/lib -L${GETTEXT_PREFIX}/lib -lintl" >> $GITHUB_ENV
           echo "PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig" >> $GITHUB_ENV
 
       - name: Build ImageLib and BlockOut (release)
