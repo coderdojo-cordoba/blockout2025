@@ -46,8 +46,8 @@ ADD_LIBS = ../ImageLib/src/libimagelib.a
 CXX		= g++
 
 ifdef _macos
-CXXFLAGS = -O2 -DMACOS -c -I../ImageLib/src -I. $(shell sdl-config --cflags)
-LFLAGS = $(ADD_LIBS) $(shell sdl-config --libs) -lSDL_mixer -framework OpenGL -framework GLUT -lm
+CXXFLAGS = -O2 -DMACOS -c -I../ImageLib/src -I. $(shell sdl-config --cflags) $(shell pkg-config --cflags SDL2_mixer)
+LFLAGS = $(ADD_LIBS) $(shell sdl-config --libs) $(shell pkg-config --libs SDL2_mixer) -framework OpenGL -framework GLUT -lm
 else
 
 ifdef _linux64
