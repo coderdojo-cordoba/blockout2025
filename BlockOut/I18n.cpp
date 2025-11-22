@@ -18,6 +18,7 @@
 #include "I18n.h"
 #include <string.h>
 #include <stdio.h>
+#include <cstdlib>
 
 #ifdef WINDOWS
 #include <windows.h>
