@@ -133,7 +133,7 @@ cd BlockOut
 
 ### Windows
 
-1. Install Microsoft Visual Studio 2013 or later
+1. Install Microsoft Visual Studio 2022 (or 2019/2017)
 2. Install SDL 1.2.15 development libraries from [libsdl.org](http://www.libsdl.org)
 3. Install SDL_mixer 1.2.12 development libraries from [libsdl.org](http://www.libsdl.org/projects/SDL_mixer/release-1.2.html)
 4. Set appropriate include and lib paths in project properties
