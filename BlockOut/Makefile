@@ -1,13 +1,15 @@
 #---------------------------------------------------------------------
 # Makefile for BlockOut
 #
-# ubuntu 12.04 LTS needed packages.
+# Ubuntu (tested on 22.04 / 24.04) build packages:
 #
-#  libgl1-mesa-swx11-dev
+#  build-essential
 #  libglu1-mesa-dev
+#  libgl1-mesa-dev
 #  libxext-dev
 #  libsdl1.2-dev
 #  libsdl-mixer1.2-dev
+#  libasound2-dev
 #
 #---------------------------------------------------------------------
 # All source files needed for the application
@@ -41,13 +43,18 @@ OBJ=    BlockOut.o         PageChooseSetup.o       PageStartGame.o \
 
 ADD_LIBS = ../ImageLib/src/libimagelib.a
 
+CXX		= g++
+
+ifdef _macos
+CXXFLAGS = -O2 -DMACOS -DGL_SILENCE_DEPRECATION -c -I../ImageLib/src -I. $(shell sdl-config --cflags)
+LFLAGS = $(ADD_LIBS) $(shell sdl-config --libs) -lSDL_mixer -framework OpenGL -framework GLUT -lm
+else
+
 ifdef _linux64
 SDL_LIBS = /usr/lib/x86_64-linux-gnu
 else
 SDL_LIBS = /usr/lib/i386-linux-gnu
 endif
-
-CXX		= g++
 
 ifdef _release
 
@@ -69,6 +76,7 @@ LFLAGS   =      -L $(SDL_LIBS) \
 		-lSDL_mixer -lSDL -lasound \
 		-lGL -lGLU -lpthread -lm -ldl
 
+endif
 endif
 
 

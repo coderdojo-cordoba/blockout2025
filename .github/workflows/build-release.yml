@@ -1,0 +1,77 @@
+name: Build and Release (Ubuntu 24.04)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - development
+    paths:
+      - ".github/workflows/build-release.yml"
+      - "BlockOut/**"
+      - "ImageLib/**"
+      - "build-and-run.sh"
+      - "install-ubuntu-deps.sh"
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies (Ubuntu 24.04)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libglu1-mesa-dev \
+            libgl1-mesa-dev \
+            libxext-dev \
+            libsdl1.2-dev \
+            libsdl-mixer1.2-dev \
+            libasound2-dev
+
+      - name: Build ImageLib
+        run: make -C ImageLib/src
+
+      - name: Build BlockOut (release)
+        run: make -C BlockOut _linux64=1 _release=1
+
+      - name: Package release tarball
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          RELEASE_DATE=$(date -u +%Y%m%d)
+          BASE_VERSION="2.5"
+          VERSION="${BASE_VERSION}-${GITHUB_REF_NAME}-${RELEASE_DATE}-${SHORT_SHA}"
+          PKG_NAME="blockout-${VERSION}"
+          mkdir -p "dist/${PKG_NAME}"
+          cp BlockOut/blockout "dist/${PKG_NAME}/"
+          cp -r BlockOut/images "dist/${PKG_NAME}/"
+          cp -r BlockOut/sounds "dist/${PKG_NAME}/"
+          cp README.txt "dist/${PKG_NAME}/"
+          cp BlockOut/README.txt "dist/${PKG_NAME}/README.BlockOut.txt"
+          tar -czf "dist/${PKG_NAME}.tar.gz" -C dist "${PKG_NAME}"
+          echo "PKG_NAME=${PKG_NAME}" >> "$GITHUB_ENV"
+          echo "PKG_PATH=dist/${PKG_NAME}.tar.gz" >> "$GITHUB_ENV"
+          echo "RELEASE_TAG=blockout-${VERSION}" >> "$GITHUB_ENV"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG_NAME }}
+          path: ${{ env.PKG_PATH }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: BlockOut II ${{ env.RELEASE_TAG }}
+          files: ${{ env.PKG_PATH }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
