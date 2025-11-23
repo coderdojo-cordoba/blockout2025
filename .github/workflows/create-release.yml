@@ -2,6 +2,9 @@ name: Create Release
 
 on:
   workflow_dispatch:
+    branches:
+      - main
+      - development
     inputs:
       version:
         description: 'Release version (e.g., v2.5.0)'
@@ -11,6 +14,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: read
 
 jobs:
   build-linux-tarball:
@@ -42,6 +46,7 @@ jobs:
         cp BlockOut/blockout dist/blockout/
         cp -r BlockOut/images dist/blockout/
         cp -r BlockOut/sounds dist/blockout/
+        cp -r BlockOut/locale dist/blockout/ 2>/dev/null || true
         cp README.md dist/blockout/
         cp BlockOut/README.txt dist/blockout/README.BlockOut.txt
         
@@ -73,7 +78,8 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    - name: Merge development into main
+    - name: Merge development into main (if on development)
+      if: github.ref == 'refs/heads/development'
       run: |
         git checkout main
         git pull origin main
@@ -91,17 +97,81 @@ jobs:
         name: blockout-linux-tarball
 
     - name: Wait for platform builds to complete
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        echo "Waiting 15 minutes for all platform builds to complete..."
-        echo "This allows time for Windows, macOS, Fedora RPM, Arch, and Ubuntu/Debian builds to finish."
-        sleep 900
+        echo "Waiting for platform build workflows to complete..."
+        echo "Tag created: ${{ github.event.inputs.version }}"
+        
+        # Give workflows time to start (tag push triggers them)
+        sleep 30
+        
+        # List of workflows to wait for
+        workflows=(
+          "Build Windows"
+          "Build macOS (brew)"
+          "Build Debian Packages (Ubuntu releases)"
+          "Build Fedora RPM"
+          "Build Arch Package"
+        )
+        
+        max_wait=1800  # 30 minutes
+        check_interval=30
+        elapsed=0
+        
+        while [ $elapsed -lt $max_wait ]; do
+          all_complete=true
+          
+          echo ""
+          echo "Checking workflow status (${elapsed}s elapsed)..."
+          
+          for workflow in "${workflows[@]}"; do
+            # Get the latest run for this workflow on main branch
+            run_status=$(gh run list \
+              --workflow "$workflow" \
+              --branch main \
+              --limit 1 \
+              --json status,conclusion \
+              --jq '.[0] | "\(.status):\(.conclusion)"')
+            
+            status=$(echo "$run_status" | cut -d: -f1)
+            conclusion=$(echo "$run_status" | cut -d: -f2)
+            
+            echo "  $workflow: $status ($conclusion)"
+            
+            if [ "$status" != "completed" ]; then
+              all_complete=false
+            elif [ "$conclusion" = "failure" ]; then
+              echo "WARNING: $workflow failed!"
+            fi
+          done
+          
+          if [ "$all_complete" = true ]; then
+            echo ""
+            echo "All workflows completed!"
+            break
+          fi
+          
+          sleep $check_interval
+          elapsed=$((elapsed + check_interval))
+        done
+        
+        if [ $elapsed -ge $max_wait ]; then
+          echo "WARNING: Timeout waiting for workflows. Proceeding anyway..."
+        fi
 
     - name: Download all release artifacts
       uses: actions/download-artifact@v4
       with:
-        pattern: '*'
+        pattern: 'blockout-*'
         path: release-artifacts/
         merge-multiple: true
+
+    - name: List downloaded artifacts
+      run: |
+        echo "Downloaded artifacts:"
+        ls -lah release-artifacts/ || echo "No artifacts found in release-artifacts/"
+        ls -lah . | grep blockout || echo "No artifacts found in current directory"
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
@@ -125,6 +195,9 @@ jobs:
           ## Changes
           
           This release includes:
+          - Internationalization support for 23 languages
+          - Comprehensive contributor documentation (CONTRIBUTING.md)
+          - Multi-language README files
           - Fixed all platform build issues (Windows, macOS, Fedora, Arch Linux, Ubuntu/Debian)
           - macOS: Built with sdl12-compat and SDL_mixer 1.2 from source
           - Windows: Packaged with all required DLLs and assets
@@ -137,6 +210,6 @@ jobs:
         prerelease: false
         files: |
           blockout-linux-x64-*.tar.gz
-          release-artifacts/**
+          release-artifacts/**/*
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

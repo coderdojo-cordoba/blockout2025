@@ -44,6 +44,27 @@ Lõbutse BlockOut II-ga...
 - [Afrikaans](README.af.md)
 - [العربية](README.ar.md)
 
+## 🤝 Liitu Meie Rahvusvahelise Meeskonnaga!
+
+**Kutsume kõiki noori arendajaid CoderDojost ja Code Clubist!** 🌍
+
+Loome rahvusvahelist meeskonda, et muuta BlockOut II kättesaadavaks mängijatele üle maailma **23 keeles**. Olenemata sellest, kas oled algaja või kogenud programmeerija, on siin koht sinu jaoks!
+
+**Mida õpid:**
+- 🌐 Rahvusvahelistamine (i18n) ja lokaliseerimine
+- 💻 Mängude arendus C++ keeles
+- 🔧 Ehitussüsteemid ja CI/CD
+- 🤝 Ülemaailmne koostöö
+
+**Kuidas panustada:**
+- 📝 Tõlgi mäng oma keelde
+- 🎨 Loo lokaliseeritud fonte ja graafikat
+- 🧪 Testi erinevatel platvormidel
+- 🔨 Paranda ehitussüsteemi
+- 🎮 Lisa uusi funktsioone
+
+👉 **[Loe CONTRIBUTING.md](../CONTRIBUTING.md) alustamiseks!**
+
 ## 📦 Allalaadimised
 
 Hankige oma platvormile uusim versioon [Väljalasete lehelt](https://github.com/coderdojo-cordoba/blockout2025/releases):
