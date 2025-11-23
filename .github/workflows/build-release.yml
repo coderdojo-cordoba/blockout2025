@@ -1,4 +1,4 @@
-name: Build and Release (Ubuntu 24.04)
+name: Build Linux Tarball
 
 on:
   workflow_dispatch:
@@ -6,12 +6,6 @@ on:
     branches:
       - main
       - development
-    paths:
-      - ".github/workflows/build-release.yml"
-      - "BlockOut/**"
-      - "ImageLib/**"
-      - "build-and-run.sh"
-      - "install-ubuntu-deps.sh"
 
 permissions:
   contents: write
@@ -65,13 +59,3 @@ jobs:
           name: ${{ env.PKG_NAME }}
           path: ${{ env.PKG_PATH }}
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.RELEASE_TAG }}
-          name: BlockOut II ${{ env.RELEASE_TAG }}
-          files: ${{ env.PKG_PATH }}
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
