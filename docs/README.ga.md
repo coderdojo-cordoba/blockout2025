@@ -44,6 +44,27 @@ Bain sult as BlockOut II...
 - [Afrikaans](README.af.md)
 - [العربية](README.ar.md)
 
+## 🤝 Bí Páirteach inár bhFoireann Idirnáisiúnta!
+
+**Ag glaoch ar gach forbróir óg ó CoderDojo agus Code Club!** 🌍
+
+Táimid ag tógáil foireann idirnáisiúnta chun BlockOut II a dhéanamh inrochtana d'imreoirí ar fud an domhain i **23 teanga**. Cibé an tosaitheoirí nó ríomhchláraitheoir taithí tú, tá áit duit!
+
+**Cad a fhoghlaimeoidh tú:**
+- 🌐 Idirnáisiúnú (i18n) agus logánú
+- 💻 Forbairt cluichí C++
+- 🔧 Córais tógála agus CI/CD
+- 🤝 Comhoibriú domhanda
+
+**Conas cur leis:**
+- 📝 Aistrigh an cluiche go do theanga
+- 🎨 Cruthaigh clónna agus grafaicí logánaithe
+- 🧪 Tástáil ar ardáin éagsúla
+- 🔨 Feabhsaigh an córas tógála
+- 🎮 Cuir gnéithe nua leis
+
+👉 **[Léigh CONTRIBUTING.md](../CONTRIBUTING.md) chun tosú!**
+
 ## 📦 Íoslódálacha
 
 Faigh an leagan is déanaí do d'ardán ón [leathanach Eisiúintí](https://github.com/coderdojo-cordoba/blockout2025/releases):

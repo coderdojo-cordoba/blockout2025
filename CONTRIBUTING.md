@@ -407,8 +407,6 @@ Here are some project ideas you can work on during your coding club sessions:
 ## 📞 Contact
 
 - **GitHub**: [coderdojo-cordoba/blockout2025](https://github.com/coderdojo-cordoba/blockout2025)
-- **Original Author**: Jean-Luc PONS (jlp_38@yahoo.com)
-- **Official Website**: [blockout.net/blockout2](http://www.blockout.net/blockout2)
 
 ---
 

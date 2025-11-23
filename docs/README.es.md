@@ -44,6 +44,27 @@ Diviértete con BlockOut II...
 - [Afrikaans](README.af.md)
 - [العربية](README.ar.md)
 
+## 🤝 ¡Únete a Nuestro Equipo Internacional!
+
+**¡Llamando a todos los jóvenes desarrolladores de CoderDojo y Code Club!** 🌍
+
+Estamos construyendo un equipo internacional para hacer BlockOut II accesible a jugadores de todo el mundo en **23 idiomas**. Ya seas principiante o programador experimentado, ¡hay un lugar para ti!
+
+**Lo que aprenderás:**
+- 🌐 Internacionalización (i18n) y localización
+- 💻 Desarrollo de juegos en C++
+- 🔧 Sistemas de compilación y CI/CD
+- 🤝 Colaboración global
+
+**Cómo contribuir:**
+- 📝 Traduce el juego a tu idioma
+- 🎨 Crea fuentes y gráficos localizados
+- 🧪 Prueba en diferentes plataformas
+- 🔨 Mejora el sistema de compilación
+- 🎮 Añade nuevas características
+
+👉 **[Lee CONTRIBUTING.md](../CONTRIBUTING.md) para comenzar!**
+
 ## 📦 Descargas
 
 Obtén la última versión para tu plataforma desde la [página de Releases](https://github.com/coderdojo-cordoba/blockout2025/releases):

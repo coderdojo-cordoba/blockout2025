@@ -44,6 +44,27 @@ BlockOut II 是原版 BlockOut DOS 游戏的 OpenGL 改编版，原版游戏由 
 - [Afrikaans](README.af.md)
 - [العربية](README.ar.md)
 
+## 🤝 加入我们的国际团队！
+
+**呼唤所有来自CoderDojo和Code Club的年轻开发者！** 🌍
+
+我们正在组建一个国际团队，让BlockOut II能够以**23种语言**为全世界的玩家提供服务。无论你是初学者还是经验丰富的程序员，这里都有你的位置！
+
+**你将学到：**
+- 🌐 国际化（i18n）和本地化
+- 💻 C++游戏开发
+- 🔧 构建系统和CI/CD
+- 🤝 全球协作
+
+**如何贡献：**
+- 📝 将游戏翻译成你的语言
+- 🎨 创建本地化字体和图形
+- 🧪 在不同平台上测试
+- 🔨 改进构建系统
+- 🎮 添加新功能
+
+👉 **[阅读CONTRIBUTING.md](../CONTRIBUTING.md)开始吧！**
+
 ## 📦 下载
 
 从 [发布页面](https://github.com/coderdojo-cordoba/blockout2025/releases) 获取适用于您平台的最新版本：
